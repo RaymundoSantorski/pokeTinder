@@ -1,0 +1,16 @@
+.pokeGrid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pokeCard{
+    border-color: transparent;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5 );
+    margin: 10px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: large;
+}

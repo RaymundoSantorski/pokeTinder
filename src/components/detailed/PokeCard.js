@@ -4,6 +4,7 @@ import {
 } from 'react';
 
 import axios from '../../helpers/axiosConfig';
+import '../css/global.css';
 
 
 export const PokeCard = ({ poke }) => {
@@ -22,7 +23,7 @@ export const PokeCard = ({ poke }) => {
             {
 
                 pokeInfo?
-                <div>
+                <div className='pokeCard' >
                     <img src={pokeInfo.sprites.front_default} />
                     <p>{pokeInfo.name}</p>
                 </div>

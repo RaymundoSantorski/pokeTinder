@@ -25,7 +25,7 @@ export const Main = () => {
   }, []);
 
   return (
-    <>
+    <div className='pokeGrid'>
       {
         pokemons ? 
         pokemons.map((poke) => {
@@ -35,6 +35,6 @@ export const Main = () => {
         })
         : <p>No hay nada que mostrar</p>
       }
-    </>
+    </div>
   )
 }
