@@ -9,7 +9,7 @@ import { Main } from './components/main/Main';
 export const App = () => {
   return (
     <div className="App">
-      <h1>Pokemon</h1>
+      <h1 className='title'>Pokemon</h1>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/pokemon/:name" element={<Pokemon to="/pokemon/:name" />} />
