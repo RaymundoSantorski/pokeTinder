@@ -4,6 +4,7 @@ import {
 } from 'react';
 
 import axios from '../../helpers/axiosConfig';
+import { PokeCard } from '../detailed/PokeCard';
 
 
 export const Main = () => {
@@ -11,26 +12,25 @@ export const Main = () => {
   const [pokemons, setPokemons] = useState();
 
   const getPokeData = ( url ) => {
-    axios.get(url)
-    .then(response => {
-      console.log(response.data);
-    })
+    return axios.get(url)
+    .then(response => response.data);
   }
 
   useEffect(() => {
     axios.get('/pokemon/')
-    .then(response => {
-      setPokemons(response.data.results);
+    .then((response) => {
+      const pokes = response.data.results;
+      setPokemons(pokes);
     });
-  }, [])
+  }, []);
 
   return (
     <>
       {
         pokemons ? 
-        pokemons.map(poke => {
+        pokemons.map((poke) => {
           return (
-            <p>{ poke.name }</p>
+            <PokeCard key={poke.name} poke={poke} />
           )
         })
         : <p>No hay nada que mostrar</p>
