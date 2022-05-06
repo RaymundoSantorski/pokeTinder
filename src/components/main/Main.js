@@ -27,11 +27,6 @@ export const Main = () => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(matched);
-    console.log(passed);
-  }, [active]);
-
   const setNextPoke = () => {
     if(active < pokemons.length - 1){
       setActive(active+1);
@@ -53,23 +48,33 @@ export const Main = () => {
     <div className='pokeGrid'>
       {
         pokemons?
-        <>
-          <PokeCard key={pokemons[active].name} poke={pokemons[active]} />
-          <div className='buttons'>
-            <button 
-              className='button' 
-              onClick={() => {
-                addPassed(pokemons[active]);
-              }}
-              >Pass</button>
-            <button 
-              className='button' 
-              onClick={() => {
-                addMatched(pokemons[active]);
-              }}
-              >Match</button>
-          </div>
-        </>
+          <>
+              {
+                pokemons.map((pokem, i) => {
+                  const show = i === active;
+                  return (
+                    <>
+                      <PokeCard key={pokem.name} poke={pokem} show={show} last={(active-i)===(1)} />
+                    </>
+                  )
+
+                })
+              }
+              <div className='buttons'>
+                <button 
+                  className='button' 
+                  onClick={() => {
+                    addPassed(pokemons[active]);
+                  }}
+                  >Pass</button>
+                <button 
+                  className='button' 
+                  onClick={() => {
+                    addMatched(pokemons[active]);
+                  }}
+                  >Match</button>
+              </div>
+          </>
         : <p>No hay nada que mostrar</p>
       }
     </div>

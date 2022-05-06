@@ -30,6 +30,8 @@
 }
 
 .pokeCard{
+    margin-right: 0%;
+    display: block;
     border-color: transparent;
     border-radius: 8px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5 );
@@ -41,12 +43,35 @@
     animation-name: slidein;
 }
 
+.pokeCard.hidden{
+    display: none;
+}
+
+.pokeCard.out{
+    animation-duration: 1s;
+    animation-name: slideout;
+}
+
 .pokeImg{
     width: 250px
 }
 
+@keyframes slideout{
+    from {
+        margin-right: 0%;
+        z-index: 10;
+    }
+
+    to {
+        margin-right: 150%;
+        opacity: 0;
+        z-index: 10;
+    }
+}
+
 @keyframes slidein {
     from {
+        opacity: 0;
         margin-left: 80%;
     }
 
