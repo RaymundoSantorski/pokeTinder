@@ -3,6 +3,25 @@
     text-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5 );
 }
 
+.buttons{
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.button{
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.5 );
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+    margin: 20px;
+    font-size: large;
+    font-weight: bold;
+    padding: 5px;
+}
+
 .pokeGrid{
     display: flex;
     flex-direction: row;
