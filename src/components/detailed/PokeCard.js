@@ -18,7 +18,7 @@ export const PokeCard = ({ poke, show, last }) => {
         .then(response => {
             if(response) setpokeInfo(response.data);
         });
-    }, []);
+    }, [poke.url]);
 
     useEffect(() => {
         if(show){
@@ -41,12 +41,15 @@ export const PokeCard = ({ poke, show, last }) => {
         ref.current.classList.remove('hidden');
     }
 
+    console.log(pokeInfo);
+
     return (
         <>
             {
                 pokeInfo && 
                     <div ref={ref} className={`pokeCard hidden`} >
                         <img 
+                            alt={`${pokeInfo.name}`}
                             src={pokeInfo.sprites.front_default} 
                             className="pokeImg"
                         />

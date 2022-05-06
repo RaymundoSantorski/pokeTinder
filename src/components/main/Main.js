@@ -14,11 +14,6 @@ export const Main = () => {
   const [passed, setPassed] = useState([]);
   const [matched, setMatched] = useState([]);
 
-  const getPokeData = ( url ) => {
-    return axios.get(url)
-    .then(response => response.data);
-  }
-
   useEffect(() => {
     axios.get('/pokemon/')
     .then((response) => {
@@ -54,7 +49,7 @@ export const Main = () => {
                   const show = i === active;
                   return (
                     <>
-                      <PokeCard key={pokem.name} poke={pokem} show={show} last={(active-i)===(1)} />
+                      <PokeCard key={i} poke={pokem} show={show} last={(active-i)===(1)} />
                     </>
                   )
 
