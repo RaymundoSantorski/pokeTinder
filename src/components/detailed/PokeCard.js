@@ -24,7 +24,10 @@ export const PokeCard = ({ poke }) => {
 
                 pokeInfo?
                 <div className='pokeCard' >
-                    <img src={pokeInfo.sprites.front_default} />
+                    <img 
+                        src={pokeInfo.sprites.front_default} 
+                        className="pokeImg"
+                    />
                     <p>{pokeInfo.name}</p>
                 </div>
                 : <p>No hay info</p>

@@ -11,6 +11,8 @@ export const Main = () => {
 
   const [pokemons, setPokemons] = useState();
   const [active, setActive] = useState(0);
+  const [passed, setPassed] = useState([]);
+  const [matched, setMatched] = useState([]);
 
   const getPokeData = ( url ) => {
     return axios.get(url)
@@ -25,12 +27,27 @@ export const Main = () => {
     });
   }, []);
 
+  useEffect(() => {
+    console.log(matched);
+    console.log(passed);
+  }, [active]);
+
   const setNextPoke = () => {
-    console.log(active);
     if(active < pokemons.length - 1){
       setActive(active+1);
     }
   }
+
+  const addMatched = (pokemon) => {
+    setMatched([...matched, pokemon]);
+    setNextPoke();
+  }
+
+  const addPassed = (pokemon) => {
+    setPassed([...passed, pokemon]);
+    setNextPoke();
+  }
+
 
   return (
     <div className='pokeGrid'>
@@ -39,8 +56,18 @@ export const Main = () => {
         <>
           <PokeCard key={pokemons[active].name} poke={pokemons[active]} />
           <div className='buttons'>
-            <button className='button' onClick={setNextPoke}>Pass</button>
-            <button className='button' onClick={setNextPoke}>Match</button>
+            <button 
+              className='button' 
+              onClick={() => {
+                addPassed(pokemons[active]);
+              }}
+              >Pass</button>
+            <button 
+              className='button' 
+              onClick={() => {
+                addMatched(pokemons[active]);
+              }}
+              >Match</button>
           </div>
         </>
         : <p>No hay nada que mostrar</p>
